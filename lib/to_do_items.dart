@@ -6,8 +6,19 @@ class Item {
   final String name;
 
   String abbrev() {
-    return name.substring(0, 2);
+    return name.substring(0, 1);
   }
+}
+
+class car {
+  const car(
+      {required this.makemodel,
+      required this.package,
+      required this.priceestimate});
+
+  final String makemodel;
+  final int package;
+  final int priceestimate;
 }
 
 typedef ToDoListChangedCallback = Function(Item item, bool completed);
@@ -33,7 +44,7 @@ class ToDoListItem extends StatelessWidget {
     // taking place and therefore which theme to use.
 
     return completed //
-        ? Colors.black
+        ? Colors.black54
         : Theme.of(context).primaryColor;
   }
 
@@ -59,10 +70,10 @@ class ToDoListItem extends StatelessWidget {
           : null,
       leading: CircleAvatar(
         backgroundColor: _getColor(context),
-        child: Text(item.name),
+        child: Text(item.abbrev()),
       ),
       title: Text(
-        item.abbrev(),
+        item.name,
         style: _getTextStyle(context),
       ),
     );

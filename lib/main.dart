@@ -11,7 +11,10 @@ class ToDoList extends StatefulWidget {
 
 class _ToDoListState extends State<ToDoList> {
   // Dialog with text from https://www.appsdeveloperblog.com/alert-dialog-with-a-text-field-in-flutter/
-  final TextEditingController _inputController = TextEditingController();
+  final TextEditingController _MakeModelController = TextEditingController();
+  final TextEditingController _PackageController = TextEditingController();
+  final TextEditingController _PriceEstimateController =
+      TextEditingController();
   final ButtonStyle yesStyle = ElevatedButton.styleFrom(
       textStyle: const TextStyle(fontSize: 20), primary: Colors.green);
   final ButtonStyle noStyle = ElevatedButton.styleFrom(
@@ -23,24 +26,45 @@ class _ToDoListState extends State<ToDoList> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: const Text('Item To Add'),
-            content: TextField(
-              onChanged: (value) {
-                setState(() {
-                  valueText = value;
-                });
-              },
-              controller: _inputController,
-              decoration:
-                  const InputDecoration(hintText: "type something here"),
-            ),
+            title: const Text('Add detail'),
+            content: Column(children: <Widget>[
+              TextField(
+                onChanged: (value) {
+                  setState(() {
+                    valueText = value;
+                  });
+                },
+                controller: _MakeModelController,
+                decoration:
+                    const InputDecoration(hintText: "Vehicle Make/Model"),
+              ),
+              TextField(
+                  onChanged: (value) {
+                    setState(() {
+                      valueText = value;
+                    });
+                  },
+                  controller: _PackageController,
+                  decoration: const InputDecoration(
+                      hintText: "Select Package 1, 2, or 3")),
+              TextField(
+                  onChanged: (value) {
+                    setState(() {
+                      valueText = value;
+                    });
+                  },
+                  controller: _PriceEstimateController,
+                  decoration: const InputDecoration(
+                      hintText: "Enter your price range")),
+            ]),
             actions: <Widget>[
               ElevatedButton(
-                key: const Key("OkButton"),
+                key: const Key("OKButton"),
                 style: yesStyle,
                 child: const Text('OK'),
                 onPressed: () {
                   setState(() {
+                    _handleNewItem(valueText);
                     Navigator.pop(context);
                   });
                 },
@@ -48,7 +72,7 @@ class _ToDoListState extends State<ToDoList> {
 
               // https://stackoverflow.com/questions/52468987/how-to-turn-disabled-button-into-enabled-button-depending-on-conditions
               ValueListenableBuilder<TextEditingValue>(
-                valueListenable: _inputController,
+                valueListenable: _MakeModelController,
                 builder: (context, value, child) {
                   return ElevatedButton(
                     key: const Key("CancelButton"),
@@ -56,7 +80,6 @@ class _ToDoListState extends State<ToDoList> {
                     onPressed: value.text.isNotEmpty
                         ? () {
                             setState(() {
-                              _handleNewItem(valueText);
                               Navigator.pop(context);
                             });
                           }
@@ -107,9 +130,11 @@ class _ToDoListState extends State<ToDoList> {
   void _handleNewItem(String itemText) {
     setState(() {
       print("Adding new item");
-      Item item = const Item(name: "itemText");
+      Item item = Item(name: itemText);
       items.insert(0, item);
-      _inputController.clear();
+      _MakeModelController.clear();
+      _PackageController.clear();
+      _PriceEstimateController.clear();
     });
   }
 
