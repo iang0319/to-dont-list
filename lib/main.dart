@@ -31,7 +31,7 @@ class _ToDoListState extends State<ToDoList> {
               TextField(
                 onChanged: (value) {
                   setState(() {
-                    valueText = value;
+                    MakeModelText = value;
                   });
                 },
                 controller: _MakeModelController,
@@ -41,7 +41,7 @@ class _ToDoListState extends State<ToDoList> {
               TextField(
                   onChanged: (value) {
                     setState(() {
-                      valueText = value;
+                      PackageText = value;
                     });
                   },
                   controller: _PackageController,
@@ -50,7 +50,7 @@ class _ToDoListState extends State<ToDoList> {
               TextField(
                   onChanged: (value) {
                     setState(() {
-                      valueText = value;
+                      PriceEstimateText = value;
                     });
                   },
                   controller: _PriceEstimateController,
@@ -64,7 +64,8 @@ class _ToDoListState extends State<ToDoList> {
                 child: const Text('OK'),
                 onPressed: () {
                   setState(() {
-                    _handleNewItem(valueText);
+                    _handleNewItem(MakeModelText, MakeModelText, PackageText,
+                        PriceEstimateText);
                     Navigator.pop(context);
                   });
                 },
@@ -95,11 +96,27 @@ class _ToDoListState extends State<ToDoList> {
 
   String valueText = "";
 
-  final List<Item> items = [const Item(name: "add more todos")];
+  String MakeModelText = "";
+
+  String PackageText = "";
+
+  String PriceEstimateText = "";
+
+  final List<Item> items = [const Item(name: "Example: ")];
+
+  final List<car> cars1 = [
+    const car(makemodel: "Nissan", package: "1", priceestimate: "100")
+  ];
+//Need to find a way to display all text across banner rather than just 1st text
 
   final _itemSet = <Item>{};
 
-  void _handleListChanged(Item item, bool completed) {
+  final _carSet = <car>{};
+
+  final car cars = car(makemodel: "", package: "", priceestimate: "");
+  //Example
+
+  void _handleListChanged(Item item, bool completed, car car) {
     setState(() {
       // When a user changes what's in the list, you need
       // to change _itemSet inside a setState call to
@@ -117,6 +134,16 @@ class _ToDoListState extends State<ToDoList> {
         _itemSet.remove(item);
         items.insert(0, item);
       }
+
+      cars1.remove(car);
+      if (!completed) {
+        _carSet.add(car);
+        cars1.add(car);
+      } else {
+        _carSet.remove(car);
+        cars1.insert(0, car);
+        //Need to find a way to delete examples
+      }
     });
   }
 
@@ -127,11 +154,15 @@ class _ToDoListState extends State<ToDoList> {
     });
   }
 
-  void _handleNewItem(String itemText) {
+  void _handleNewItem(
+      String itemText, String MakeModel, String Package, String PriceEstimate) {
     setState(() {
       print("Adding new item");
       Item item = Item(name: itemText);
       items.insert(0, item);
+      car cars = car(
+          makemodel: MakeModel, package: Package, priceestimate: PriceEstimate);
+      cars1.insert(0, cars);
       _MakeModelController.clear();
       _PackageController.clear();
       _PriceEstimateController.clear();
@@ -149,6 +180,7 @@ class _ToDoListState extends State<ToDoList> {
           children: items.map((item) {
             return ToDoListItem(
               item: item,
+              cars: cars,
               completed: _itemSet.contains(item),
               onListChanged: _handleListChanged,
               onDeleteItem: _handleDeleteItem,

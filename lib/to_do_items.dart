@@ -17,11 +17,11 @@ class car {
       required this.priceestimate});
 
   final String makemodel;
-  final int package;
-  final int priceestimate;
+  final String package;
+  final String priceestimate;
 }
 
-typedef ToDoListChangedCallback = Function(Item item, bool completed);
+typedef ToDoListChangedCallback = Function(Item item, bool completed, car cars);
 typedef ToDoListRemovedCallback = Function(Item item);
 
 class ToDoListItem extends StatelessWidget {
@@ -29,13 +29,15 @@ class ToDoListItem extends StatelessWidget {
       {required this.item,
       required this.completed,
       required this.onListChanged,
-      required this.onDeleteItem})
+      required this.onDeleteItem,
+      required this.cars})
       : super(key: ObjectKey(item));
 
   final Item item;
   final bool completed;
   final ToDoListChangedCallback onListChanged;
   final ToDoListRemovedCallback onDeleteItem;
+  final car cars;
 
   Color _getColor(BuildContext context) {
     // The theme depends on the BuildContext because different
@@ -61,7 +63,7 @@ class ToDoListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () {
-        onListChanged(item, completed);
+        onListChanged(item, completed, cars);
       },
       onLongPress: completed
           ? () {
@@ -73,7 +75,7 @@ class ToDoListItem extends StatelessWidget {
         child: Text(item.abbrev()),
       ),
       title: Text(
-        item.name,
+        item.name + cars.makemodel + cars.package + cars.priceestimate,
         style: _getTextStyle(context),
       ),
     );
