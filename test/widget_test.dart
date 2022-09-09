@@ -13,8 +13,8 @@ import 'package:to_dont_list/to_do_items.dart';
 
 void main() {
   test('Item abbreviation should be first letter', () {
-    const item = Item(name: "add more todos");
-    expect(item.abbrev(), "a");
+    const cars = car(makemodel: 'Nissan', package: '1', priceestimate: '150');
+    expect(cars.abbrev(), "N");
   });
 
   // Yes, you really need the MaterialApp and Scaffold
@@ -22,10 +22,11 @@ void main() {
     await tester.pumpWidget(MaterialApp(
         home: Scaffold(
             body: ToDoListItem(
-                item: const Item(name: "test"),
+                cars: const car(
+                    makemodel: 'test', package: 'test', priceestimate: 'test'),
                 completed: true,
-                onListChanged: (Item item, bool completed) {},
-                onDeleteItem: (Item item) {}))));
+                onListChanged: (bool completed, car car) {},
+                onDeleteItem: (car cars) {}))));
     final textFinder = find.text('test');
 
     // Use the `findsOneWidget` matcher provided by flutter_test to verify
@@ -38,10 +39,11 @@ void main() {
     await tester.pumpWidget(MaterialApp(
         home: Scaffold(
             body: ToDoListItem(
-                item: const Item(name: "test"),
+                cars: const car(
+                    makemodel: 'test', package: 'test', priceestimate: 'test'),
                 completed: true,
-                onListChanged: (Item item, bool completed) {},
-                onDeleteItem: (Item item) {}))));
+                onListChanged: (bool completed, car car) {},
+                onDeleteItem: (car cars) {}))));
     final abbvFinder = find.text('t');
     final avatarFinder = find.byType(CircleAvatar);
 
