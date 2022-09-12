@@ -19,21 +19,23 @@ class car {
   final String makemodel;
   final String package;
   final String priceestimate;
+
+  String abbrev() {
+    return makemodel.substring(0, 1);
+  }
 }
 
-typedef ToDoListChangedCallback = Function(Item item, bool completed, car cars);
-typedef ToDoListRemovedCallback = Function(Item item);
+typedef ToDoListChangedCallback = Function(bool completed, car cars);
+typedef ToDoListRemovedCallback = Function(car Car);
 
 class ToDoListItem extends StatelessWidget {
   ToDoListItem(
-      {required this.item,
-      required this.completed,
+      {required this.completed,
       required this.onListChanged,
       required this.onDeleteItem,
       required this.cars})
-      : super(key: ObjectKey(item));
+      : super(key: ObjectKey(cars));
 
-  final Item item;
   final bool completed;
   final ToDoListChangedCallback onListChanged;
   final ToDoListRemovedCallback onDeleteItem;
@@ -63,19 +65,19 @@ class ToDoListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () {
-        onListChanged(item, completed, cars);
+        onListChanged(completed, cars);
       },
       onLongPress: completed
           ? () {
-              onDeleteItem(item);
+              onDeleteItem(cars);
             }
           : null,
       leading: CircleAvatar(
         backgroundColor: _getColor(context),
-        child: Text(item.abbrev()),
+        child: Text(cars.abbrev()),
       ),
       title: Text(
-        item.name + cars.makemodel + cars.package + cars.priceestimate,
+        cars.makemodel + ', ' + cars.package + ', ' + cars.priceestimate,
         style: _getTextStyle(context),
       ),
     );

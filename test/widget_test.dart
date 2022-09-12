@@ -23,15 +23,15 @@ void main() {
         home: Scaffold(
             body: ToDoListItem(
                 cars: const car(
-                    makemodel: 'test', package: 'test', priceestimate: 'test'),
+                    makemodel: 'test1',
+                    package: 'test2',
+                    priceestimate: 'test3'),
                 completed: true,
                 onListChanged: (bool completed, car car) {},
                 onDeleteItem: (car cars) {}))));
-    final textFinder = find.text('test');
+    final mmFinder = find.text("test1" + ", " + "test2" + ", " + 'test3');
 
-    // Use the `findsOneWidget` matcher provided by flutter_test to verify
-    // that the Text widgets appear exactly once in the widget tree.
-    expect(textFinder, findsOneWidget);
+    expect(mmFinder, findsWidgets);
   });
 
   testWidgets('ToDoListItem has a Circle Avatar with abbreviation',
@@ -73,14 +73,24 @@ void main() {
     await tester.tap(find.byType(FloatingActionButton));
     await tester.pump(); // Pump after every action to rebuild the widgets
     expect(find.text("hi"), findsNothing);
+    expect(find.text("1"), findsNothing);
+    expect(find.text("100"), findsNothing);
 
-    await tester.enterText(find.byType(TextField), 'hi');
+    await tester.enterText(find.byKey(Key("MMKey")), 'hi');
     await tester.pump();
     expect(find.text("hi"), findsOneWidget);
+
+    await tester.enterText(find.byKey(Key("PackKey")), '1');
+    await tester.pump();
+    expect(find.text("1"), findsOneWidget);
+
+    await tester.enterText(find.byKey(Key("PEKey")), '100');
+    await tester.pump();
+    expect(find.text("100"), findsOneWidget);
 
     await tester.tap(find.byKey(const Key("OKButton")));
     await tester.pump();
-    expect(find.text("hi"), findsOneWidget);
+    expect(find.text("hi" + ", " + "1" + ", " + '100'), findsWidgets);
 
     final listItemFinder = find.byType(ToDoListItem);
 

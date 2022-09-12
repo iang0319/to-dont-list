@@ -29,6 +29,7 @@ class _ToDoListState extends State<ToDoList> {
             title: const Text('Add detail'),
             content: Column(children: <Widget>[
               TextField(
+                key: Key("MMKey"),
                 onChanged: (value) {
                   setState(() {
                     MakeModelText = value;
@@ -39,6 +40,7 @@ class _ToDoListState extends State<ToDoList> {
                     const InputDecoration(hintText: "Vehicle Make/Model"),
               ),
               TextField(
+                  key: Key("PackKey"),
                   onChanged: (value) {
                     setState(() {
                       PackageText = value;
@@ -48,6 +50,7 @@ class _ToDoListState extends State<ToDoList> {
                   decoration: const InputDecoration(
                       hintText: "Select Package 1, 2, or 3")),
               TextField(
+                  key: Key("PEKey"),
                   onChanged: (value) {
                     setState(() {
                       PriceEstimateText = value;
@@ -64,7 +67,7 @@ class _ToDoListState extends State<ToDoList> {
                 child: const Text('OK'),
                 onPressed: () {
                   setState(() {
-                    _handleNewItem(MakeModelText, MakeModelText, PackageText,
+                    _handleNewItem(PackageText, MakeModelText, PackageText,
                         PriceEstimateText);
                     Navigator.pop(context);
                   });
@@ -102,38 +105,24 @@ class _ToDoListState extends State<ToDoList> {
 
   String PriceEstimateText = "";
 
-  final List<Item> items = [const Item(name: "Example: ")];
-
   final List<car> cars1 = [
     const car(makemodel: "Nissan", package: "1", priceestimate: "100")
   ];
 //Need to find a way to display all text across banner rather than just 1st text
 
-  final _itemSet = <Item>{};
-
   final _carSet = <car>{};
 
-  final car cars = car(makemodel: "", package: "", priceestimate: "");
+  final car cars = const car(
+      makemodel: " Nissan Altima S", package: " 1", priceestimate: " 100");
   //Example
 
-  void _handleListChanged(Item item, bool completed, car car) {
+  void _handleListChanged(bool completed, car car) {
     setState(() {
       // When a user changes what's in the list, you need
       // to change _itemSet inside a setState call to
       // trigger a rebuild.
       // The framework then calls build, below,
       // which updates the visual appearance of the app.
-
-      items.remove(item);
-      if (!completed) {
-        print("Completing");
-        _itemSet.add(item);
-        items.add(item);
-      } else {
-        print("Making Undone");
-        _itemSet.remove(item);
-        items.insert(0, item);
-      }
 
       cars1.remove(car);
       if (!completed) {
@@ -147,21 +136,19 @@ class _ToDoListState extends State<ToDoList> {
     });
   }
 
-  void _handleDeleteItem(Item item) {
+  void _handleDeleteItem(car Car) {
     setState(() {
       print("Deleting item");
-      items.remove(item);
+      cars1.remove(Car);
     });
   }
 
   void _handleNewItem(
-      String itemText, String MakeModel, String Package, String PriceEstimate) {
+      String itemText, String makeModel, String package, String priceEstimate) {
     setState(() {
       print("Adding new item");
-      Item item = Item(name: itemText);
-      items.insert(0, item);
       car cars = car(
-          makemodel: MakeModel, package: Package, priceestimate: PriceEstimate);
+          makemodel: makeModel, package: package, priceestimate: priceEstimate);
       cars1.insert(0, cars);
       _MakeModelController.clear();
       _PackageController.clear();
@@ -173,20 +160,20 @@ class _ToDoListState extends State<ToDoList> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('To Do List'),
+          title: const Text('G-hops Detailing List'),
         ),
         body: ListView(
           padding: const EdgeInsets.symmetric(vertical: 8.0),
-          children: items.map((item) {
+          children: cars1.map((Car) {
             return ToDoListItem(
-              item: item,
-              cars: cars,
-              completed: _itemSet.contains(item),
+              cars: Car,
+              completed: _carSet.contains(Car),
               onListChanged: _handleListChanged,
               onDeleteItem: _handleDeleteItem,
             );
           }).toList(),
         ),
+        //const Text("0"),
         floatingActionButton: FloatingActionButton(
             child: const Icon(Icons.add),
             onPressed: () {
@@ -197,7 +184,7 @@ class _ToDoListState extends State<ToDoList> {
 
 void main() {
   runApp(const MaterialApp(
-    title: 'To Do List',
+    title: 'G-hops Detailing List',
     home: ToDoList(),
   ));
 }
