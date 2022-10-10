@@ -10,8 +10,8 @@ class Item {
   }
 }
 
-class car {
-  const car(
+class Car {
+  const Car(
       {required this.makemodel,
       required this.package,
       required this.priceestimate});
@@ -25,8 +25,8 @@ class car {
   }
 }
 
-typedef ToDoListChangedCallback = Function(bool completed, car cars);
-typedef ToDoListRemovedCallback = Function(car Car);
+typedef ToDoListChangedCallback = Function(bool completed, Car cars);
+typedef ToDoListRemovedCallback = Function(Car car);
 
 class ToDoListItem extends StatelessWidget {
   ToDoListItem(
@@ -39,7 +39,7 @@ class ToDoListItem extends StatelessWidget {
   final bool completed;
   final ToDoListChangedCallback onListChanged;
   final ToDoListRemovedCallback onDeleteItem;
-  final car cars;
+  final Car cars;
 
   Color _getColor(BuildContext context) {
     // The theme depends on the BuildContext because different

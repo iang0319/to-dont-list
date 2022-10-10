@@ -13,7 +13,7 @@ import 'package:to_dont_list/to_do_items.dart';
 
 void main() {
   test('Item abbreviation should be first letter', () {
-    const cars = car(makemodel: 'Nissan', package: '1', priceestimate: '150');
+    const cars = Car(makemodel: 'Nissan', package: '1', priceestimate: '150');
     expect(cars.abbrev(), "N");
   });
 
@@ -22,13 +22,13 @@ void main() {
     await tester.pumpWidget(MaterialApp(
         home: Scaffold(
             body: ToDoListItem(
-                cars: const car(
+                cars: const Car(
                     makemodel: 'test1',
                     package: 'test2',
                     priceestimate: 'test3'),
                 completed: true,
-                onListChanged: (bool completed, car car) {},
-                onDeleteItem: (car cars) {}))));
+                onListChanged: (bool completed, Car car) {},
+                onDeleteItem: (Car cars) {}))));
     final mmFinder = find.text("test1" + ", " + "test2" + ", " + 'test3');
 
     expect(mmFinder, findsWidgets);
@@ -39,11 +39,11 @@ void main() {
     await tester.pumpWidget(MaterialApp(
         home: Scaffold(
             body: ToDoListItem(
-                cars: const car(
+                cars: const Car(
                     makemodel: 'test', package: 'test', priceestimate: 'test'),
                 completed: true,
-                onListChanged: (bool completed, car car) {},
-                onDeleteItem: (car cars) {}))));
+                onListChanged: (bool completed, Car car) {},
+                onDeleteItem: (Car cars) {}))));
     final abbvFinder = find.text('t');
     final avatarFinder = find.byType(CircleAvatar);
 

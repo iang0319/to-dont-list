@@ -105,18 +105,18 @@ class _ToDoListState extends State<ToDoList> {
 
   String PriceEstimateText = "";
 
-  final List<car> cars1 = [
-    const car(makemodel: "Nissan", package: "1", priceestimate: "100")
+  final List<Car> cars1 = [
+    const Car(makemodel: "Nissan", package: "1", priceestimate: "100")
   ];
 //Need to find a way to display all text across banner rather than just 1st text
 
-  final _carSet = <car>{};
+  final _carSet = <Car>{};
 
-  final car cars = const car(
+  final Car cars = const Car(
       makemodel: " Nissan Altima S", package: " 1", priceestimate: " 100");
   //Example
 
-  void _handleListChanged(bool completed, car car) {
+  void _handleListChanged(bool completed, Car car) {
     setState(() {
       // When a user changes what's in the list, you need
       // to change _itemSet inside a setState call to
@@ -136,7 +136,7 @@ class _ToDoListState extends State<ToDoList> {
     });
   }
 
-  void _handleDeleteItem(car Car) {
+  void _handleDeleteItem(Car Car) {
     setState(() {
       print("Deleting item");
       cars1.remove(Car);
@@ -147,7 +147,7 @@ class _ToDoListState extends State<ToDoList> {
       String itemText, String makeModel, String package, String priceEstimate) {
     setState(() {
       print("Adding new item");
-      car cars = car(
+      Car cars = Car(
           makemodel: makeModel, package: package, priceestimate: priceEstimate);
       cars1.insert(0, cars);
       _MakeModelController.clear();
