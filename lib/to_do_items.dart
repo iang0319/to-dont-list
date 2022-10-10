@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 
 class Item {
@@ -10,7 +12,7 @@ class Item {
   }
 }
 
-class Car {
+class Car extends StatefulWidget {
   const Car(
       {required this.makemodel,
       required this.package,
@@ -23,7 +25,37 @@ class Car {
   String abbrev() {
     return makemodel.substring(0, 1);
   }
+  
+  int detailcounter = 0;
+
+  @override
+ // State<Car> 
+
+  @override 
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          width: 150,
+          height: 50,
+            child: FloatingActionButton(
+              onPressed: _detailcounter,
+              
+
+        )
+      )
+    )
+      ]
+      
+  }
+
+void _detailcounter() {
+  detailcounter++;
 }
+  
+}
+
+
 
 typedef ToDoListChangedCallback = Function(bool completed, Car cars);
 typedef ToDoListRemovedCallback = Function(Car car);
@@ -83,3 +115,4 @@ class ToDoListItem extends StatelessWidget {
     );
   }
 }
+
