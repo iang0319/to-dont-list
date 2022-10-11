@@ -67,6 +67,8 @@ class ToDoListItem extends StatelessWidget {
     );
   }
 
+ // _detailCounter(BuildContext)
+
   @override
   Widget build(BuildContext context) {
     return ListTile(

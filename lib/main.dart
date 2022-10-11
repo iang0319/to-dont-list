@@ -1,4 +1,6 @@
 // Started with https://docs.flutter.dev/development/ui/widgets-intro
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:to_dont_list/to_do_items.dart';
 
@@ -96,6 +98,7 @@ class _DetailListState extends State<DetailList> {
           );
         });
   }
+  int _detailcounter = 0;
 
   String valueText = "";
 
@@ -156,15 +159,29 @@ class _DetailListState extends State<DetailList> {
     });
   }
 
+  void _detailCounter() {
+    setState(() {
+      _detailcounter++;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: const Text('G-hops Detailing List'),
         ),
-        body: ListView(
-          padding: const EdgeInsets.symmetric(vertical: 8.0),
-          children: cars1.map((Car) {
+        body:
+         Column(
+         // padding: const EdgeInsets.symmetric(vertical: 8.0),
+          children:
+       //     Text(
+        //    '$_detailcounter'
+       //     )
+      //    ],
+      
+
+          cars1.map((Car) {
             return ToDoListItem(
               cars: Car,
               completed: _carSet.contains(Car),
@@ -172,12 +189,26 @@ class _DetailListState extends State<DetailList> {
               onDeleteItem: _handleDeleteItem,
             );
           }).toList(),
-        ),
-        //const Text("0"),
+          
+          ),
+          bottomNavigationBar: 
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Text(
+                'Details:'
+              ),
+               Text(
+            '$_detailcounter'
+            ),
+            ]),
+          ),
+
         floatingActionButton: FloatingActionButton(
             child: const Icon(Icons.add),
             onPressed: () {
               _displayTextInputDialog(context);
+              _detailCounter();
             }));
   }
 }
