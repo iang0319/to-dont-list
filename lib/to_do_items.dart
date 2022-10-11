@@ -12,7 +12,8 @@ class Item {
   }
 }
 
-class Car extends StatefulWidget {
+class Car {
+  
   const Car(
       {required this.makemodel,
       required this.package,
@@ -25,35 +26,8 @@ class Car extends StatefulWidget {
   String abbrev() {
     return makemodel.substring(0, 1);
   }
-  
-  int detailcounter = 0;
-
-  @override
- // State<Car> 
-
-  @override 
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          width: 150,
-          height: 50,
-            child: FloatingActionButton(
-              onPressed: _detailcounter,
-              
-
-        )
-      )
-    )
-      ]
-      
   }
 
-void _detailcounter() {
-  detailcounter++;
-}
-  
-}
 
 
 

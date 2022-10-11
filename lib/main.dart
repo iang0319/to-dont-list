@@ -2,14 +2,14 @@
 import 'package:flutter/material.dart';
 import 'package:to_dont_list/to_do_items.dart';
 
-class ToDoList extends StatefulWidget {
-  const ToDoList({super.key});
+class DetailList extends StatefulWidget {
+  const DetailList({super.key});
 
   @override
-  State createState() => _ToDoListState();
+  State createState() => _DetailListState();
 }
 
-class _ToDoListState extends State<ToDoList> {
+class _DetailListState extends State<DetailList> {
   // Dialog with text from https://www.appsdeveloperblog.com/alert-dialog-with-a-text-field-in-flutter/
   final TextEditingController _MakeModelController = TextEditingController();
   final TextEditingController _PackageController = TextEditingController();
@@ -185,6 +185,6 @@ class _ToDoListState extends State<ToDoList> {
 void main() {
   runApp(const MaterialApp(
     title: 'G-hops Detailing List',
-    home: ToDoList(),
+    home: DetailList(),
   ));
 }
