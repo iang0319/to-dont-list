@@ -1,5 +1,5 @@
 // Started with https://docs.flutter.dev/development/ui/widgets-intro
-import 'dart:io';
+//import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:to_dont_list/to_do_items.dart';
@@ -53,6 +53,7 @@ class _DetailListState extends State<DetailList> {
                       hintText: "Select Package 1, 2, or 3")),
               TextField(
                   key: Key("PEKey"),
+                  keyboardType: const TextInputType.numberWithOptions(),
                   onChanged: (value) {
                     setState(() {
                       PriceEstimateText = value;
@@ -98,7 +99,10 @@ class _DetailListState extends State<DetailList> {
           );
         });
   }
+
   int _detailcounter = 0;
+
+  int _totalDetailCost = 0;
 
   String valueText = "";
 
@@ -109,7 +113,7 @@ class _DetailListState extends State<DetailList> {
   String PriceEstimateText = "";
 
   final List<Car> cars1 = [
-    const Car(makemodel: "Nissan", package: "1", priceestimate: "100")
+    const Car(makemodel: "Nissan Example", package: "1", priceestimate: "100")
   ];
 //Need to find a way to display all text across banner rather than just 1st text
 
@@ -153,6 +157,7 @@ class _DetailListState extends State<DetailList> {
       Car cars = Car(
           makemodel: makeModel, package: package, priceestimate: priceEstimate);
       cars1.insert(0, cars);
+      //_totalDetailCost += priceEstimate;
       _MakeModelController.clear();
       _PackageController.clear();
       _PriceEstimateController.clear();
@@ -165,23 +170,49 @@ class _DetailListState extends State<DetailList> {
     });
   }
 
+  Future<void> _averageDetail(BuildContext context) async {
+    print("Loading Average Dialog");
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text('Detail Average'),
+            content: const SizedBox(
+              width: 100,
+              height: 60,
+              child: Text("Detail Average is 100 dollars"),
+            ),
+            actions: <Widget>[
+              ElevatedButton(
+                key: const Key("OKButton"),
+                style: yesStyle,
+                child: const Text('Leave'),
+                onPressed: () {
+                  setState(() {
+                    Navigator.pop(context);
+                  });
+                },
+              ),
+            ],
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: const Text('G-hops Detailing List'),
         ),
-        body:
-         Column(
-         // padding: const EdgeInsets.symmetric(vertical: 8.0),
+        body: Column(
+          // padding: const EdgeInsets.symmetric(vertical: 8.0),
           children:
-       //     Text(
-        //    '$_detailcounter'
-       //     )
-      //    ],
-      
+              //     Text(
+              //    '$_detailcounter'
+              //     )
+              //    ],
 
-          cars1.map((Car) {
+              cars1.map((Car) {
             return ToDoListItem(
               cars: Car,
               completed: _carSet.contains(Car),
@@ -189,21 +220,20 @@ class _DetailListState extends State<DetailList> {
               onDeleteItem: _handleDeleteItem,
             );
           }).toList(),
-          
-          ),
-          bottomNavigationBar: 
-          Padding(
-            padding: EdgeInsets.all(10),
-            child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-              Text(
-                'Details:'
-              ),
-               Text(
-            '$_detailcounter'
-            ),
-            ]),
-          ),
-
+        ),
+        bottomNavigationBar: Padding(
+          padding: EdgeInsets.all(10),
+          child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+            Text('Details:'),
+            Text('$_detailcounter'),
+            ElevatedButton(
+              child: const Text("Average"),
+              onPressed: () {
+                _averageDetail(context);
+              },
+            )
+          ]),
+        ),
         floatingActionButton: FloatingActionButton(
             child: const Icon(Icons.add),
             onPressed: () {
