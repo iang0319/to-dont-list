@@ -95,5 +95,14 @@ void main() {
     expect(listItemFinder, findsNWidgets(2));
   });
 
+  testWidgets("Testing functionality of the average button", (tester) async {
+    await tester.pumpWidget(const MaterialApp(home: DetailList()));
+    await tester.pump();
+
+    await tester.tap(find.byKey(const Key("AverageKey")));
+    await tester.pump();
+    expect(find.byKey(const Key("AverageKey")), findsOneWidget);
+  });
+
   // One to test the tap and press actions on the items?
 }

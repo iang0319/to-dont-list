@@ -230,6 +230,7 @@ class _DetailListState extends State<DetailList> {
             Text('Details:'),
             Text('$_detailcounter'),
             ElevatedButton(
+              key: const Key("AverageKey"),
               child: const Text("Average"),
               onPressed: () {
                 _averageDetail(context);
