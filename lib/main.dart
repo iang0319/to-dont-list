@@ -172,6 +172,13 @@ class _DetailListState extends State<DetailList> {
     });
   }
 
+  double _displayAverage(int totalCash, int totalDetails) {
+    if (totalDetails != 0) {
+      return totalCash / totalDetails;
+    }
+    return 0;
+  }
+
   Future<void> _averageDetail(BuildContext context) async {
     print("Loading Average Dialog");
     return showDialog(
@@ -183,7 +190,7 @@ class _DetailListState extends State<DetailList> {
               width: 100,
               height: 60,
               child: Text(
-                  "Detail Average is ${_totalDetailCost / _detailcounter} dollars"),
+                  "Detail Average is \$${_displayAverage(_totalDetailCost, _detailcounter)}"),
             ),
             actions: <Widget>[
               ElevatedButton(
@@ -226,12 +233,18 @@ class _DetailListState extends State<DetailList> {
         ),
         bottomNavigationBar: Padding(
           padding: EdgeInsets.all(10),
-          child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Text('Details:'),
-            Text('$_detailcounter'),
+          child:
+              Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+            Wrap(
+              spacing: 2, // set spacing here
+              children: <Widget>[
+                Text("Details:"),
+                Text('$_detailcounter'),
+              ],
+            ),
             ElevatedButton(
               key: const Key("AverageKey"),
-              child: const Text("Average"),
+              child: const Text("Average Detail Price"),
               onPressed: () {
                 _averageDetail(context);
               },
