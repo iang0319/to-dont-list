@@ -70,17 +70,17 @@ void main() {
 
     await tester.tap(find.byType(FloatingActionButton));
     await tester.pump(); // Pump after every action to rebuild the widgets
-    //expect(find.text("hi"), findsNothing);
-    //expect(find.text("1"), findsNothing);
-    //expect(find.text("100"), findsNothing);
+    expect(find.text("Nissan"), findsNothing);
+    expect(find.text("2"), findsNothing);
+    expect(find.text("100"), findsNothing);
 
-    await tester.enterText(find.byKey(Key("MMKey")), 'hi');
+    await tester.enterText(find.byKey(Key("MMKey")), 'Nissan');
     await tester.pump();
-    expect(find.text("hi"), findsOneWidget);
+    expect(find.text("Nissan"), findsOneWidget);
 
-    await tester.enterText(find.byKey(Key("PackKey")), '1');
+    await tester.enterText(find.byKey(Key("PackKey")), '2');
     await tester.pump();
-    expect(find.text("1"), findsOneWidget);
+    expect(find.text("2"), findsOneWidget);
 
     await tester.enterText(find.byKey(Key("PEKey")), "100");
     await tester.pump();
@@ -88,7 +88,7 @@ void main() {
 
     await tester.tap(find.byKey(const Key("OKButton")));
     await tester.pump();
-    expect(find.text("hi" + ", " + "1" + ", " + '100'), findsWidgets);
+    expect(find.text("Nissan" + ", " + "2" + ", " + '100'), findsWidgets);
 
     final listItemFinder = find.byType(ToDoListItem);
 

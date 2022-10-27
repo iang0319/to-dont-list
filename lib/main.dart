@@ -113,7 +113,7 @@ class _DetailListState extends State<DetailList> {
   int PriceEstimateText = 0;
 
   final List<Car> cars1 = [
-    const Car(makemodel: "Nissan Example", package: "1", priceestimate: 100)
+    const Car(makemodel: "Nissan Example", package: "Ex: 1", priceestimate: 100)
   ];
 //Need to find a way to display all text across banner rather than just 1st text
 
