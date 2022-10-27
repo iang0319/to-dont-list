@@ -147,6 +147,8 @@ class _DetailListState extends State<DetailList> {
     setState(() {
       print("Deleting item");
       cars1.remove(Car);
+      _totalDetailCost -= Car.priceestimate;
+      _detailcounter--;
     });
   }
 
