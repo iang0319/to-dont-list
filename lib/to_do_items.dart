@@ -20,7 +20,7 @@ class Car {
 
   final String makemodel;
   final String package;
-  final String priceestimate;
+  final int priceestimate;
 
   String abbrev() {
     return makemodel.substring(0, 1);
@@ -81,7 +81,11 @@ class ToDoListItem extends StatelessWidget {
         child: Text(cars.abbrev()),
       ),
       title: Text(
-        cars.makemodel + ', ' + cars.package + ', ' + cars.priceestimate,
+        cars.makemodel +
+            ', ' +
+            cars.package +
+            ', ' +
+            cars.priceestimate.toString(),
         style: _getTextStyle(context),
       ),
     );

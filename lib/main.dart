@@ -53,10 +53,10 @@ class _DetailListState extends State<DetailList> {
                       hintText: "Select Package 1, 2, or 3")),
               TextField(
                   key: Key("PEKey"),
-                  keyboardType: const TextInputType.numberWithOptions(),
+                  //keyboardType: TextInputType.number,
                   onChanged: (value) {
                     setState(() {
-                      PriceEstimateText = value;
+                      PriceEstimateText = int.parse(value);
                     });
                   },
                   controller: _PriceEstimateController,
@@ -110,17 +110,17 @@ class _DetailListState extends State<DetailList> {
 
   String PackageText = "";
 
-  String PriceEstimateText = "";
+  int PriceEstimateText = 0;
 
   final List<Car> cars1 = [
-    const Car(makemodel: "Nissan Example", package: "1", priceestimate: "100")
+    const Car(makemodel: "Nissan Example", package: "1", priceestimate: 100)
   ];
 //Need to find a way to display all text across banner rather than just 1st text
 
   final _carSet = <Car>{};
 
   final Car cars = const Car(
-      makemodel: " Nissan Altima S", package: " 1", priceestimate: " 100");
+      makemodel: " Nissan Altima S", package: " 1", priceestimate: 100);
   //Example
 
   void _handleListChanged(bool completed, Car car) {
@@ -151,13 +151,13 @@ class _DetailListState extends State<DetailList> {
   }
 
   void _handleNewItem(
-      String itemText, String makeModel, String package, String priceEstimate) {
+      String itemText, String makeModel, String package, int priceEstimate) {
     setState(() {
       print("Adding new item");
       Car cars = Car(
           makemodel: makeModel, package: package, priceestimate: priceEstimate);
       cars1.insert(0, cars);
-      //_totalDetailCost += priceEstimate;
+      _totalDetailCost += priceEstimate;
       _MakeModelController.clear();
       _PackageController.clear();
       _PriceEstimateController.clear();
@@ -177,10 +177,11 @@ class _DetailListState extends State<DetailList> {
         builder: (context) {
           return AlertDialog(
             title: const Text('Detail Average'),
-            content: const SizedBox(
+            content: SizedBox(
               width: 100,
               height: 60,
-              child: Text("Detail Average is 100 dollars"),
+              child: Text(
+                  "Detail Average is ${_totalDetailCost / _detailcounter} dollars"),
             ),
             actions: <Widget>[
               ElevatedButton(
