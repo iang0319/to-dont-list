@@ -1,30 +1,28 @@
 import 'package:flutter/material.dart';
 
-class Item {
-  const Item({required this.name});
-
-  final String name;
-
-  String abbrev() {
-    return name.substring(0, 1);
-  }
-}
-
 typedef ToDoListChangedCallback = Function(Workout workout, bool completed);
-typedef ToDoListRemovedCallback = Function(Item item);
+typedef ToDoListRemovedCallback = Function(Workout workout);
 
 class ToDoListItem extends StatelessWidget {
-  ToDoListItem({
-    required this.workout,
-    required this.completed,
-    required this.onListChanged,
-    required this.onDeleteItem,
-  }) : super(key: ObjectKey(workout));
+  ToDoListItem(
+      {required this.workout,
+      required this.completed,
+      required this.onListChanged,
+      required this.onDeleteItem,
+      required this.displayEditDialog})
+      : super(key: ObjectKey(workout));
 
   final Workout workout;
   final bool completed;
   final ToDoListChangedCallback onListChanged;
   final ToDoListRemovedCallback onDeleteItem;
+  final ToDoListRemovedCallback displayEditDialog;
+
+  /* new dialog for edit button. What it needs to do:
+    - Take in workout with its info
+    - Autofill workout info in each text box
+    - Save the changes after it's done
+  */
 
   Color _getColor(BuildContext context) {
     // The theme depends on the BuildContext because different
@@ -53,7 +51,7 @@ class ToDoListItem extends StatelessWidget {
         builder: (context) {
           return AlertDialog(
             title: const Text('Exercise Info'),
-            content: Column(children: [
+            content: Column(mainAxisSize: MainAxisSize.min, children: [
               Text("Exercise: ${workout.name}"),
               Text("Sets: ${workout.sets}"),
               Text("Reps: ${workout.reps}"),
@@ -74,29 +72,43 @@ class ToDoListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: () {
-        onListChanged(workout, completed);
-      },
-      onLongPress: () {
-        _displayWorkoutInfo(context);
-      },
-      leading: CircleAvatar(
-        backgroundColor: _getColor(context),
-        child: Text(workout.abbrev()),
-      ),
-      title: Text(
-        workout.name,
-        style: _getTextStyle(context),
-      ),
-    );
+        onTap: () {
+          onListChanged(workout, completed);
+        },
+        onLongPress: () {
+          _displayWorkoutInfo(context);
+        },
+        leading: CircleAvatar(
+          backgroundColor: _getColor(context),
+          child: Text(workout.abbrev()),
+        ),
+        title: Text(
+          workout.name,
+          style: _getTextStyle(context),
+        ),
+        trailing: Row(mainAxisSize: MainAxisSize.min, children: [
+          ElevatedButton(
+              onPressed: () {
+                displayEditDialog(workout);
+              },
+              key: const Key("Edit Button"),
+              child: const Text("Edit")),
+          TextButton(
+              onPressed: () {
+                onDeleteItem(workout);
+              },
+              child: const Text("X",
+                  key: Key("Delete Button"),
+                  style: TextStyle(fontSize: 20, color: Colors.blueGrey)))
+        ]));
   }
 }
 
 class Workout {
-  const Workout({required this.name, required this.reps, required this.sets});
-  final String name;
-  final String sets;
-  final String reps;
+  Workout({required this.name, required this.reps, required this.sets});
+  String name;
+  String sets;
+  String reps;
 
   String abbrev() {
     return name.substring(0, 1);
