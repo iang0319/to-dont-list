@@ -140,6 +140,7 @@ class _ToDoListState extends State<ToDoList> {
                 const Padding(padding: EdgeInsets.only(top: 20)),
                 const Text("Edit Sets:"),
                 TextField(
+                    keyboardType: TextInputType.number,
                     onChanged: (value2) {
                       if (int.tryParse(value2) != null) {
                         newSets = int.parse(value2);
@@ -151,6 +152,7 @@ class _ToDoListState extends State<ToDoList> {
                 const Padding(padding: EdgeInsets.only(top: 20)),
                 const Text("Edit Reps:"),
                 TextField(
+                    keyboardType: TextInputType.number,
                     onChanged: (value3) {
                       if (int.tryParse(value3) != null) {
                         newReps = int.parse(value3);
