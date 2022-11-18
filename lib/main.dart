@@ -44,6 +44,7 @@ class _ToDoListState extends State<ToDoList> {
               const Text("Sets"),
               TextField(
                 key: const Key('setsKey'),
+                keyboardType: TextInputType.number,
                 onChanged: (value2) {
                   setState(() {
                     sets = value2;
@@ -55,6 +56,7 @@ class _ToDoListState extends State<ToDoList> {
               const Text("Reps"),
               TextField(
                 key: Key('repsKey'),
+                keyboardType: TextInputType.number,
                 onChanged: (value3) {
                   setState(() {
                     reps = value3;
