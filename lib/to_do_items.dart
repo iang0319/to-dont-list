@@ -75,36 +75,40 @@ class ToDoListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-        onTap: () {
-          onListChanged(workout, completed);
-        },
-        onLongPress: () {
-          _displayWorkoutInfo(context);
-        },
-        leading: CircleAvatar(
-          backgroundColor: _getColor(context),
-          child: Text(workout.abbrev()),
-        ),
-        title: Text(
-          workout.name,
-          style: _getTextStyle(context),
-        ),
-        trailing: Row(mainAxisSize: MainAxisSize.min, children: [
-          ElevatedButton(
-              onPressed: () {
-                displayEditDialog(workout);
-              },
-              key: const Key("Edit Button"),
-              child: const Text("Edit")),
-          TextButton(
-              onPressed: () {
-                onDeleteItem(workout);
-              },
-              child: const Text("X",
-                  key: Key("Delete Button"),
-                  style: TextStyle(fontSize: 20, color: Colors.blueGrey)))
-        ]));
+    return
+    Card(
+      shadowColor: Colors.orange,
+       child: ListTile(
+          onTap: () {
+            onListChanged(workout, completed);
+          },
+          onLongPress: () {
+            _displayWorkoutInfo(context);
+          },
+          leading: CircleAvatar(
+            backgroundColor: _getColor(context),
+            child: Text(workout.abbrev()),
+          ),
+          title: Text(
+            workout.name,
+            style: _getTextStyle(context),
+          ),
+          trailing: Row(mainAxisSize: MainAxisSize.min, children: [
+            ElevatedButton(
+                onPressed: () {
+                  displayEditDialog(workout);
+                },
+                key: const Key("Edit Button"),
+                child: const Text("Edit")),
+            TextButton(
+                onPressed: () {
+                  onDeleteItem(workout);
+                },
+                child: const Text("X",
+                    key: Key("Delete Button"),
+                    style: TextStyle(fontSize: 20, color: Colors.blueGrey)))
+          ])),
+     );
   }
 }
 
