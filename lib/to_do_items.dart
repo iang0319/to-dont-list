@@ -51,11 +51,15 @@ class ToDoListItem extends StatelessWidget {
         builder: (context) {
           return AlertDialog(
             title: const Text('Exercise Info'),
-            content: Column(mainAxisSize: MainAxisSize.min, children: [
+            content:
+            SizedBox(
+              height: 60,
+              width: 100,
+              child: Column(mainAxisSize: MainAxisSize.min, children: [
               Text("Exercise: ${workout.name}"),
               Text("Sets: ${workout.sets}"),
               Text("Reps: ${workout.reps}"),
-            ]),
+            ])),
             actions: <Widget>[
               ElevatedButton(
                 key: const Key("Leave"),
