@@ -69,11 +69,6 @@ class ToDoListItem extends StatelessWidget {
                   Navigator.pop(context);
                 },
               ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const WorkoutSuggestions()));
-                } , 
-                child: const Text("Suggestions"))
             ],
           );
         });
@@ -106,13 +101,18 @@ class ToDoListItem extends StatelessWidget {
                 },
                 key: const Key("Edit Button"),
                 child: const Text("Edit")),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const WorkoutSuggestions()));
+                } , 
+                child: const Text("Suggestions")),
             TextButton(
                 onPressed: () {
                   onDeleteItem(workout);
                 },
                 child: const Text("X",
                     key: Key("Delete Button"),
-                    style: TextStyle(fontSize: 20, color: Colors.blueGrey)))
+                    style: TextStyle(fontSize: 20, color: Colors.blueGrey))),
           ])),
      );
   }
