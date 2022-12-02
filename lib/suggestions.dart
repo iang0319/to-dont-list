@@ -10,9 +10,13 @@ class WorkoutSuggestions extends StatelessWidget {
     fontWeight: FontWeight.w700,
     textStyle: TextStyle(color: Colors.black, letterSpacing: .5),
   );
-
   final TextStyle textstyle2 = GoogleFonts.lato(
     fontSize: 12,
+    textStyle: TextStyle(color: Colors.black, letterSpacing: .5),
+  );
+  final TextStyle textstyle3 = GoogleFonts.oswald(
+    fontSize: 25,
+    fontWeight: FontWeight.w700,
     textStyle: TextStyle(color: Colors.black, letterSpacing: .5),
   );
 
@@ -30,6 +34,8 @@ class WorkoutSuggestions extends StatelessWidget {
                 width: 300,
                 height: 100,
                 color: Color.fromARGB(255, 255, 0, 0),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(20))),
                 child: TextButton(
                     onPressed: () {
                       showDialog(
@@ -45,7 +51,7 @@ class WorkoutSuggestions extends StatelessWidget {
                           });
                     },
                     child: Text("Legs",
-                    style: textstyle1,)),
+                    style: textstyle3,)),
               ),
               Container(
                 width: 300,
@@ -54,6 +60,8 @@ class WorkoutSuggestions extends StatelessWidget {
                 width: 300,
                 height: 100,
                 color: Color.fromARGB(255, 255, 0, 0),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(20))),
                 child: TextButton(
                     onPressed: () {
                       showDialog(
@@ -69,7 +77,7 @@ class WorkoutSuggestions extends StatelessWidget {
                           });
                     },
                     child: Text("Arms",
-                    style: textstyle1,)),
+                    style: textstyle3,)),
               ),
               Container(
                 width: 300,
@@ -78,6 +86,8 @@ class WorkoutSuggestions extends StatelessWidget {
                 width: 300,
                 height: 100,
                 color: Color.fromARGB(255, 255, 0, 0),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(20))),
                 child: TextButton(
                     onPressed: () {
                       showDialog(
@@ -93,7 +103,7 @@ class WorkoutSuggestions extends StatelessWidget {
                           });
                     },
                     child: Text("Chest",
-                    style: textstyle1,)),
+                    style: textstyle3,)),
               ),
               Container(
                 width: 300,
@@ -102,6 +112,8 @@ class WorkoutSuggestions extends StatelessWidget {
                 width: 300,
                 height: 100,
                 color: Color.fromARGB(255, 255, 0, 0),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(20))),
                 child: TextButton(
                     onPressed: () {
                       showDialog(
@@ -117,7 +129,7 @@ class WorkoutSuggestions extends StatelessWidget {
                           });
                     },
                     child: Text("Back",
-                    style: textstyle1,)),     
+                    style: textstyle3,)),     
               ),
               Container(
                 width: 300,
@@ -125,13 +137,16 @@ class WorkoutSuggestions extends StatelessWidget {
               Container(
                 width: 300,
                 height: 100,
-                color: Color.fromARGB(255, 255, 0, 0),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(20))),
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.pop(context);
                   } , 
+                  style: ElevatedButton.styleFrom(
+                    primary: Color.fromARGB(255, 255, 0, 0), ),
                   child: Text("Return",
-                  style: textstyle1,)),
+                  style: textstyle3,)),
               ),
               ]))));
   }
