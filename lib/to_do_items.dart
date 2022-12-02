@@ -107,7 +107,7 @@ class ToDoListItem extends StatelessWidget {
             ),
             ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const WorkoutSuggestions()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => WorkoutSuggestions()));
                 } , 
                 child: const Text("Suggestions")),
             TextButton(
