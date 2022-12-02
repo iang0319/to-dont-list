@@ -102,8 +102,8 @@ class ToDoListItem extends StatelessWidget {
                 key: const Key("Edit Button"),
                 child: const Text("Edit")),
             Container(
-              width: 15,
-              height: 15,
+              width: 10,
+              height: 10,
             ),
             ElevatedButton(
                 onPressed: () {
