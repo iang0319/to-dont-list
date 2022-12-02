@@ -25,6 +25,9 @@ class WorkoutSuggestions extends StatelessWidget {
                   Navigator.pop(context);
                 } , 
                 child: const Text("Return")),
+                Container(
+                width: 300,
+                height: 50,),
               Container(
                 width: 300,
                 height: 50,
@@ -47,6 +50,9 @@ class WorkoutSuggestions extends StatelessWidget {
               ),
               Container(
                 width: 300,
+                height: 50,),
+              Container(
+                width: 300,
                 height: 50,
                 child: TextButton(
                     onPressed: () {
@@ -67,6 +73,9 @@ class WorkoutSuggestions extends StatelessWidget {
               ),
               Container(
                 width: 300,
+                height: 50,),
+              Container(
+                width: 300,
                 height: 50,
                 child: TextButton(
                     onPressed: () {
@@ -85,6 +94,9 @@ class WorkoutSuggestions extends StatelessWidget {
                     child: Text("Chest",
                     style: textstyle1,)),
               ),
+              Container(
+                width: 300,
+                height: 50,),
               Container(
                 width: 300,
                 height: 50,
