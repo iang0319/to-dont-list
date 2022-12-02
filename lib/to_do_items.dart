@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:to_dont_list/suggestions.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 typedef ToDoListChangedCallback = Function(Workout workout, bool completed);
 typedef ToDoListRemovedCallback = Function(Workout workout);
@@ -18,6 +19,10 @@ class ToDoListItem extends StatelessWidget {
   final ToDoListChangedCallback onListChanged;
   final ToDoListRemovedCallback onDeleteItem;
   final ToDoListRemovedCallback displayEditDialog;
+
+  final TextStyle textstyle1 = GoogleFonts.lato(
+    fontSize: 15,
+    textStyle: TextStyle(color: Colors.black, letterSpacing: .5));
 
   /* new dialog for edit button. What it needs to do:
     - Take in workout with its info
@@ -87,8 +92,9 @@ class ToDoListItem extends StatelessWidget {
             _displayWorkoutInfo(context);
           },
           leading: CircleAvatar(
-            backgroundColor: _getColor(context),
-            child: Text(workout.abbrev()),
+            backgroundColor: Colors.grey,
+            child: Text(workout.abbrev(),
+            style: textstyle1,),
           ),
           title: Text(
             workout.name,
@@ -102,7 +108,8 @@ class ToDoListItem extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                     primary: Color.fromARGB(255, 255, 0, 0), ),
                 key: const Key("Edit Button"),
-                child: const Text("Edit")),
+                child: Text("Edit",
+                style: textstyle1,)),
             Container(
               width: 10,
               height: 10,
@@ -113,14 +120,15 @@ class ToDoListItem extends StatelessWidget {
                 } , 
                 style: ElevatedButton.styleFrom(
                     primary: Color.fromARGB(255, 255, 0, 0), ),
-                child: const Text("Suggestions")),
+                child: Text("Suggestions",
+                style: textstyle1,)),
             TextButton(
                 onPressed: () {
                   onDeleteItem(workout);
                 },
-                child: const Text("X",
+                child: Text("X",
                     key: Key("Delete Button"),
-                    style: TextStyle(fontSize: 20, color: Colors.blueGrey))),
+                    style: textstyle1)),
           ])),
      );
   }
