@@ -44,6 +44,7 @@ class _ToDoListState extends State<ToDoList> {
               const Text("Sets"),
               TextField(
                 key: const Key('setsKey'),
+                keyboardType: TextInputType.number,
                 onChanged: (value2) {
                   setState(() {
                     sets = value2;
@@ -55,6 +56,7 @@ class _ToDoListState extends State<ToDoList> {
               const Text("Reps"),
               TextField(
                 key: Key('repsKey'),
+                keyboardType: TextInputType.number,
                 onChanged: (value3) {
                   setState(() {
                     reps = value3;
@@ -138,6 +140,7 @@ class _ToDoListState extends State<ToDoList> {
                 const Padding(padding: EdgeInsets.only(top: 20)),
                 const Text("Edit Sets:"),
                 TextField(
+                    keyboardType: TextInputType.number,
                     onChanged: (value2) {
                       if (int.tryParse(value2) != null) {
                         newSets = int.parse(value2);
@@ -149,6 +152,7 @@ class _ToDoListState extends State<ToDoList> {
                 const Padding(padding: EdgeInsets.only(top: 20)),
                 const Text("Edit Reps:"),
                 TextField(
+                    keyboardType: TextInputType.number,
                     onChanged: (value3) {
                       if (int.tryParse(value3) != null) {
                         newReps = int.parse(value3);
@@ -246,11 +250,12 @@ class _ToDoListState extends State<ToDoList> {
     return Scaffold(
         appBar: AppBar(
           title: const Text('Workout Creator'),
-          backgroundColor: Colors.black,
+          backgroundColor: Color.fromARGB(255, 255, 0, 0),
         ),
         body: ListView(
           padding: const EdgeInsets.symmetric(vertical: 8.0),
-          children: workouts.map((workout) {
+          children:
+           workouts.map((workout) {
             return ToDoListItem(
                 workout: workout,
                 completed: _workoutSet.contains(workout),
@@ -260,10 +265,12 @@ class _ToDoListState extends State<ToDoList> {
           }).toList(),
         ),
         floatingActionButton: FloatingActionButton(
+            backgroundColor: Color.fromARGB(255, 255, 0, 0),
             child: const Icon(Icons.add),
             onPressed: () {
-              _displayTextInputDialog(context);
+              _displayTextInputDialog(context); 
             }));
+        
   }
 }
 
