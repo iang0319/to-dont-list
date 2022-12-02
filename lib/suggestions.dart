@@ -145,7 +145,7 @@ class WorkoutSuggestions extends StatelessWidget {
                   } , 
                   style: ElevatedButton.styleFrom(
                     primary: Color.fromARGB(255, 255, 0, 0), ),
-                  child: Text("Return",
+                  child: Text("Return Home",
                   style: textstyle3,)),
               ),
               ]))));
