@@ -78,7 +78,7 @@ class ToDoListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return
     Card(
-      shadowColor: Colors.orange,
+      shadowColor: Colors.black,
        child: ListTile(
           onTap: () {
             onListChanged(workout, completed);
@@ -99,6 +99,8 @@ class ToDoListItem extends StatelessWidget {
                 onPressed: () {
                   displayEditDialog(workout);
                 },
+                style: ElevatedButton.styleFrom(
+                    primary: Color.fromARGB(255, 255, 0, 0), ),
                 key: const Key("Edit Button"),
                 child: const Text("Edit")),
             Container(
@@ -109,6 +111,8 @@ class ToDoListItem extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => WorkoutSuggestions()));
                 } , 
+                style: ElevatedButton.styleFrom(
+                    primary: Color.fromARGB(255, 255, 0, 0), ),
                 child: const Text("Suggestions")),
             TextButton(
                 onPressed: () {
