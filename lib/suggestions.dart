@@ -40,7 +40,7 @@ class WorkoutSuggestions extends StatelessWidget {
                           return AlertDialog(
                             title: Text("Arms"),
                             content: Text(
-                                "",
+                                "Bicep Curls - 4 x 10, Tricep Extentions - 4 x 10, Preacher Curls 3 x 10, Dips - 3 x 10",
                                 style: textstyle2 ),
                           );
                         });
@@ -54,7 +54,7 @@ class WorkoutSuggestions extends StatelessWidget {
                           return AlertDialog(
                             title: Text("Chest"),
                             content: Text(
-                                "",
+                                "BB Bench Press - 4 x 6, DB Bench Press - 4 x 6, DB Incline Bench - 4 x 8, Push ups - 3 x 10 ",
                                 style: textstyle2 ),
                           );
                         });
@@ -68,7 +68,7 @@ class WorkoutSuggestions extends StatelessWidget {
                           return AlertDialog(
                             title: Text("Back"),
                             content: Text(
-                                "",
+                                "BB Row - 4 x 8, DB Row - 4 x 8, Face Pulls - 4 x 10, Pull ups - 3 x 10",
                                 style: textstyle2 ),
                           );
                         });
