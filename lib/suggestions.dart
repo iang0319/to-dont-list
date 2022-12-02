@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class WorkoutSuggestions extends StatelessWidget {
-  const WorkoutSuggestions({super.key});
+  WorkoutSuggestions({super.key});
 
   final standard = "";
-  final TextStyle textstyle2 = const TextStyle(fontSize: 15, fontStyle: FontStyle.italic);
+  final TextStyle textstyle2 = GoogleFonts.oswald(
+    fontSize: 48,
+    fontWeight: FontWeight.w700,
+    fontStyle: FontStyle.italic,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +39,7 @@ class WorkoutSuggestions extends StatelessWidget {
                             );
                           });
                     },
-                    child: const Text("Legs")),
+                    child: Text("Legs")),
               ),
               Container(
                 width: 300,
@@ -53,7 +57,7 @@ class WorkoutSuggestions extends StatelessWidget {
                             );
                           });
                     },
-                    child: const Text("Arms")),
+                    child: Text("Arms")),
               ),
               Container(
                 width: 300,
@@ -71,7 +75,7 @@ class WorkoutSuggestions extends StatelessWidget {
                             );
                           });
                     },
-                    child: const Text("Chest")),
+                    child: Text("Chest")),
               ),
               Container(
                 width: 300,
@@ -89,7 +93,7 @@ class WorkoutSuggestions extends StatelessWidget {
                             );
                           });
                     },
-                    child: const Text("Back")),
+                    child: Text("Back")),
               )]))));
   }
 }
