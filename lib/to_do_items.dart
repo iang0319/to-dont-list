@@ -72,9 +72,12 @@ class ToDoListItem extends StatelessWidget {
                 child: const Text('Leave'),
                 onPressed: () {
                   Navigator.pop(context);
+                
                 },
+                style: ElevatedButton.styleFrom(
+                    primary: Color.fromARGB(255, 255, 0, 0)
               ),
-            ],
+          )],
           );
         });
   }
