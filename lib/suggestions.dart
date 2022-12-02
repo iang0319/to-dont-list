@@ -17,7 +17,7 @@ class WorkoutSuggestions extends StatelessWidget {
                 onPressed: () {
                   Navigator.pop(context);
                 } , 
-                child: const Text("Suggestions")),
+                child: const Text("Return")),
               TextButton(
                   onPressed: () {
                     showDialog(
@@ -31,6 +31,48 @@ class WorkoutSuggestions extends StatelessWidget {
                           );
                         });
                   },
-                  child: const Text("Legs"))]))));
+                  child: const Text("Legs")),
+              TextButton(
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text("Arms"),
+                            content: Text(
+                                "",
+                                style: textstyle2 ),
+                          );
+                        });
+                  },
+                  child: const Text("Arms")),
+              TextButton(
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text("Chest"),
+                            content: Text(
+                                "",
+                                style: textstyle2 ),
+                          );
+                        });
+                  },
+                  child: const Text("Chest")),
+              TextButton(
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text("Back"),
+                            content: Text(
+                                "",
+                                style: textstyle2 ),
+                          );
+                        });
+                  },
+                  child: const Text("Back"))]))));
   }
 }
