@@ -8,9 +8,12 @@ class WorkoutSuggestions extends StatelessWidget {
   final TextStyle textstyle1 = GoogleFonts.oswald(
     fontSize: 15,
     fontWeight: FontWeight.w700,
+    textStyle: TextStyle(color: Colors.black, letterSpacing: .5),
   );
+
   final TextStyle textstyle2 = GoogleFonts.lato(
     fontSize: 12,
+    textStyle: TextStyle(color: Colors.black, letterSpacing: .5),
   );
 
   @override
