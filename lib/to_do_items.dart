@@ -21,7 +21,7 @@ class ToDoListItem extends StatelessWidget {
   final ToDoListRemovedCallback displayEditDialog;
 
   final TextStyle textstyle1 = GoogleFonts.lato(
-    fontSize: 15,
+    fontSize: 14,
     textStyle: TextStyle(color: Colors.black, letterSpacing: .5));
 
   /* new dialog for edit button. What it needs to do:
