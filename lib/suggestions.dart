@@ -59,8 +59,8 @@ class WorkoutSuggestions extends StatelessWidget {
               Container(
                 width: 300,
                 height: 100,
-                color: Color.fromARGB(255, 255, 0, 0),
                 decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 255, 0, 0),
                   borderRadius: BorderRadius.all(Radius.circular(20))),
                 child: TextButton(
                     onPressed: () {
