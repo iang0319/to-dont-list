@@ -250,7 +250,7 @@ class _ToDoListState extends State<ToDoList> {
     return Scaffold(
         appBar: AppBar(
           title: const Text('Workout Creator'),
-          backgroundColor: Colors.black,
+          backgroundColor: Color.fromARGB(255, 255, 0, 0),
         ),
         body: ListView(
           padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -265,6 +265,7 @@ class _ToDoListState extends State<ToDoList> {
           }).toList(),
         ),
         floatingActionButton: FloatingActionButton(
+            backgroundColor: Color.fromARGB(255, 255, 0, 0),
             child: const Icon(Icons.add),
             onPressed: () {
               _displayTextInputDialog(context); 
