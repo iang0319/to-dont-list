@@ -13,6 +13,11 @@ class WorkoutSuggestions extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                } , 
+                child: const Text("Suggestions")),
               TextButton(
                   onPressed: () {
                     showDialog(
@@ -26,6 +31,6 @@ class WorkoutSuggestions extends StatelessWidget {
                           );
                         });
                   },
-                  child: const Text("pH"))]))));
+                  child: const Text("Legs"))]))));
   }
 }
