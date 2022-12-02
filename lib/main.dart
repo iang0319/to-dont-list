@@ -254,7 +254,8 @@ class _ToDoListState extends State<ToDoList> {
         ),
         body: ListView(
           padding: const EdgeInsets.symmetric(vertical: 8.0),
-          children: workouts.map((workout) {
+          children:
+           workouts.map((workout) {
             return ToDoListItem(
                 workout: workout,
                 completed: _workoutSet.contains(workout),
@@ -266,8 +267,9 @@ class _ToDoListState extends State<ToDoList> {
         floatingActionButton: FloatingActionButton(
             child: const Icon(Icons.add),
             onPressed: () {
-              _displayTextInputDialog(context);
+              _displayTextInputDialog(context); 
             }));
+        
   }
 }
 

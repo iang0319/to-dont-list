@@ -67,7 +67,12 @@ class ToDoListItem extends StatelessWidget {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-              )
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(context, )
+                } , 
+                child: const Text("Suggestions"))
             ],
           );
         });
