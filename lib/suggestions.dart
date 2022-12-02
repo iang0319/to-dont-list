@@ -5,10 +5,12 @@ class WorkoutSuggestions extends StatelessWidget {
   WorkoutSuggestions({super.key});
 
   final standard = "";
-  final TextStyle textstyle2 = GoogleFonts.oswald(
-    fontSize: 48,
+  final TextStyle textstyle1 = GoogleFonts.oswald(
+    fontSize: 15,
     fontWeight: FontWeight.w700,
-    fontStyle: FontStyle.italic,
+  );
+  final TextStyle textstyle2 = GoogleFonts.lato(
+    fontSize: 12,
   );
 
   @override
@@ -32,14 +34,16 @@ class WorkoutSuggestions extends StatelessWidget {
                           context: context,
                           builder: (BuildContext context) {
                             return AlertDialog(
-                              title: Text("Legs"),
+                              title: Text("Legs", 
+                                  style: textstyle1,),
                               content: Text(
                                   "BB Back Squat - 4 x 6, 75% Max, Front Squat - 4 x 4, 75% Max, Leg Curls - 4 x 10, 85% Max",
                                   style: textstyle2 ),
                             );
                           });
                     },
-                    child: Text("Legs")),
+                    child: Text("Legs",
+                    style: textstyle1,)),
               ),
               Container(
                 width: 300,
@@ -50,14 +54,16 @@ class WorkoutSuggestions extends StatelessWidget {
                           context: context,
                           builder: (BuildContext context) {
                             return AlertDialog(
-                              title: Text("Arms"),
+                              title: Text("Arms",
+                                  style: textstyle1,),
                               content: Text(
                                   "Bicep Curls - 4 x 10, Tricep Extentions - 4 x 10, Preacher Curls 3 x 10, Dips - 3 x 10",
                                   style: textstyle2 ),
                             );
                           });
                     },
-                    child: Text("Arms")),
+                    child: Text("Arms",
+                    style: textstyle1,)),
               ),
               Container(
                 width: 300,
@@ -68,14 +74,16 @@ class WorkoutSuggestions extends StatelessWidget {
                           context: context,
                           builder: (BuildContext context) {
                             return AlertDialog(
-                              title: Text("Chest"),
+                              title: Text("Chest",
+                                  style: textstyle1,),
                               content: Text(
                                   "BB Bench Press - 4 x 6, DB Bench Press - 4 x 6, DB Incline Bench - 4 x 8, Push ups - 3 x 10 ",
                                   style: textstyle2 ),
                             );
                           });
                     },
-                    child: Text("Chest")),
+                    child: Text("Chest",
+                    style: textstyle1,)),
               ),
               Container(
                 width: 300,
@@ -86,14 +94,16 @@ class WorkoutSuggestions extends StatelessWidget {
                           context: context,
                           builder: (BuildContext context) {
                             return AlertDialog(
-                              title: Text("Back"),
+                              title: Text("Back",
+                                  style: textstyle1,),
                               content: Text(
                                   "BB Row - 4 x 8, DB Row - 4 x 8, Face Pulls - 4 x 10, Pull ups - 3 x 10",
                                   style: textstyle2 ),
                             );
                           });
                     },
-                    child: Text("Back")),
+                    child: Text("Back",
+                    style: textstyle1,)),
               )]))));
   }
 }
