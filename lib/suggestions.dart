@@ -20,17 +20,13 @@ class WorkoutSuggestions extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                } , 
-                child: const Text("Return")),
                 Container(
                 width: 300,
                 height: 50,),
               Container(
                 width: 300,
-                height: 50,
+                height: 100,
+                color: Color.fromARGB(255, 255, 0, 0),
                 child: TextButton(
                     onPressed: () {
                       showDialog(
@@ -53,7 +49,8 @@ class WorkoutSuggestions extends StatelessWidget {
                 height: 50,),
               Container(
                 width: 300,
-                height: 50,
+                height: 100,
+                color: Color.fromARGB(255, 255, 0, 0),
                 child: TextButton(
                     onPressed: () {
                       showDialog(
@@ -76,7 +73,8 @@ class WorkoutSuggestions extends StatelessWidget {
                 height: 50,),
               Container(
                 width: 300,
-                height: 50,
+                height: 100,
+                color: Color.fromARGB(255, 255, 0, 0),
                 child: TextButton(
                     onPressed: () {
                       showDialog(
@@ -99,7 +97,8 @@ class WorkoutSuggestions extends StatelessWidget {
                 height: 50,),
               Container(
                 width: 300,
-                height: 50,
+                height: 100,
+                color: Color.fromARGB(255, 255, 0, 0),
                 child: TextButton(
                     onPressed: () {
                       showDialog(
@@ -115,7 +114,22 @@ class WorkoutSuggestions extends StatelessWidget {
                           });
                     },
                     child: Text("Back",
-                    style: textstyle1,)),
-              )]))));
+                    style: textstyle1,)),     
+              ),
+              Container(
+                width: 300,
+                height: 50,),
+              Container(
+                width: 300,
+                height: 100,
+                color: Color.fromARGB(255, 255, 0, 0),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  } , 
+                  child: Text("Return",
+                  style: textstyle1,)),
+              ),
+              ]))));
   }
 }
