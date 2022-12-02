@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:to_dont_list/suggestions.dart';
 
 typedef ToDoListChangedCallback = Function(Workout workout, bool completed);
 typedef ToDoListRemovedCallback = Function(Workout workout);
@@ -70,7 +71,7 @@ class ToDoListItem extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context, )
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const WorkoutSuggestions()));
                 } , 
                 child: const Text("Suggestions"))
             ],
